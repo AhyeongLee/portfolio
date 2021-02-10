@@ -31,6 +31,7 @@ const router = async () => {
             isMatch: true
         };
     }
+
     view = new match.route.view();
     
 

@@ -22,10 +22,7 @@ html, body{
 }
 body {
     /* background: var(--color-charcoal); */
-    background: url('../images/background.jpg') no-repeat center top; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: url('../images/background.jpg') center top; 
     background-size: cover;
 }
 a {
@@ -64,7 +61,9 @@ ul {
     justify-content: space-between;
     align-items: center;
 }
-
+ul .selected {
+    background-color: black;
+}
 
 /* SECTION HOMe */
 .section-home {
@@ -146,7 +145,7 @@ footer a:link, footer a:visited, footer a:active, footer a:hover  {
 @media screen and (min-width: 420px) {
     
     .welcome h1 {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
     .welcome h2 {
         font-size: 1.5rem;
