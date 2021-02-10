@@ -81,6 +81,8 @@ window.addEventListener('mousemove', (e) => {
 
 window.addEventListener('resize', () => {
     if (match.route.path !== '/') return;
-    view.resizeWindow();
-    view.drawImage();
+
+    // resize 했을 때 성능 이슈 때문에 resizeWindow() method 호출하는 대신 refresh
+    location.reload();
+    
 });
