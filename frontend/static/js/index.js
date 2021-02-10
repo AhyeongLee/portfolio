@@ -43,6 +43,7 @@ const router = async () => {
     if (match.route.path === '/') {
         view.init();
         view.resizeWindow();
+        view.setImage();
     }
 };
 
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener('mousemove', (e) => {
-    
+    if ("ontouchstart" in document.documentElement) return;
     if (match.route.path !== '/') return;
     if (e.target === view.canvas){
         view.isPlaying = true;
@@ -76,4 +77,10 @@ window.addEventListener('mousemove', (e) => {
         }
     }
 
+});
+
+window.addEventListener('resize', () => {
+    if (match.route.path !== '/') return;
+    view.resizeWindow();
+    view.drawImage();
 });

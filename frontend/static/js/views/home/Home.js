@@ -5,13 +5,16 @@ export default class extends AbstractView {
     constructor() {
         super();
         this.setTitle('Home');
-        this.canvasWidth = 1000;
+        this.canvasRatio = 0.5;
     }
 
     getHtml = async () => {
         return `
-            <div class="hello">
-                <h1>Hello, this is Ahyeong</h1>
+            <div class="welcome">
+                <div class="hello">
+                    <h1>Hello,</h1>
+                    <h1> this is Ahyeong</h1>
+                </div>
                 <h2>Welcome to my portfolio!</h2>
             </div>
             <canvas class="canvas"></canvas>
@@ -38,16 +41,15 @@ export default class extends AbstractView {
         this.img = new Image();
     }
     setImage = () => {
-        console.log('setIamge');
         this.img.src = '/static/images/home.png';
         this.img.onload = this.drawImage;
     }
     drawImage = () => {
-        console.log('drawImage');
         this.imageRatio = this.canvas.width / this.img.width * 0.65;
         this.startX = Math.floor(this.canvas.width/2 - this.img.width*this.imageRatio/2);
         this.startY = Math.floor(this.canvas.height/2 - this.img.height*this.imageRatio/2);
         this.ctx.drawImage(this.img, this.startX, this.startY , this.img.width * this.imageRatio , this.img.height * this.imageRatio );
+        
         this.getImageData();
     }
     getImageData = () => {
@@ -64,7 +66,7 @@ export default class extends AbstractView {
                 g: imageData[i * 4  * this.circleSize+ 1],
                 b: imageData[i * 4  * this.circleSize+ 2],
                 a: imageData[i * 4  * this.circleSize+ 3],
-            }, this.distanceLimit));
+            }, this.distanceLimit, this.speedRatio));
         }
         
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -82,8 +84,43 @@ export default class extends AbstractView {
     }
 
     resizeWindow = () => {
-        this.canvas.width = this.canvasWidth;
-        this.canvas.height = this.canvas.width * 0.5;
+        
+        // this.canvas.width = this.canvasWidth;
+        this.canvas.width = window.innerWidth * 0.9;
+        if ("ontouchstart" in document.documentElement) {
+            this.circleSize = 2;
+            this.distanceLimit = 50;
+            this.mouseSize = 25;    
+            this.canvasRatio = 0.6;
+            this.speedRatio = 1;
+        } else if (window.innerWidth < 420) {
+            this.circleSize = 6;
+            this.distanceLimit = 50;
+            this.mouseSize = 25;    
+            this.canvasRatio = 0.6;
+            this.speedRatio = 0.8;
+        } else if (window.innerWidth < 750) {
+            this.circleSize = 10;
+            this.distanceLimit = 100;
+            this.mouseSize = 50;
+            this.canvasRatio = 0.6;
+            this.speedRatio = 1;
+        } else if (window.innerWidth < 1024) {
+            this.circleSize = 10;
+            this.distanceLimit = 100;
+            this.mouseSize = 50;
+            this.canvasRatio = 0.5;
+            this.speedRatio = 1;
+        } else {
+            this.canvas.width = 1024 * 0.9;
+            this.circleSize = 10;
+            this.distanceLimit = 100;
+            this.mouseSize = 50;
+            this.canvasRatio = 0.5;
+            this.speedRatio = 1;
+        }
+        
+        this.canvas.height = this.canvas.width * this.canvasRatio;
         this.canvas.style.width = `${this.canvas.width}px`;
         this.canvas.style.height = `${this.canvas.height}px`;
 
@@ -95,8 +132,6 @@ export default class extends AbstractView {
         this.mouseY =  4000;
         this.pixels = [];
 
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.setImage();
     }
 
 

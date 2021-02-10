@@ -1,5 +1,5 @@
 export default class Particle {
-    constructor(pixel, limit) {
+    constructor(pixel, limit, speedRatio) {
         this.originX = pixel.x;
         this.originY = pixel.y;
         this.x = pixel.x;
@@ -11,7 +11,8 @@ export default class Particle {
         this.dx = 0;
         this.dy = 0;
         this.limit = limit;
-        this.speed = this.getRandomArbitrary(30, 45);
+        this.speed = this.getRandomArbitrary(30*speedRatio, 45*speedRatio);
+        this.speedRatio = speedRatio;
     }
 
     setSpeed(mouseX, mouseY, circleSize, mouseSize) {
@@ -29,10 +30,10 @@ export default class Particle {
 
         if (distance > mouseSize + circleSize) {
             if (this.x !== this.originX) {
-                this.dx = (this.originX - this.x)/5;
+                this.dx = this.speedRatio * (this.originX - this.x)/5;
             }
             if (this.y !== this.originY) {
-                this.dy = (this.originY - this.y)/5;
+                this.dy = this.speedRatio * (this.originY - this.y)/5;
             }
             
         }
