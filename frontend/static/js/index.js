@@ -5,6 +5,8 @@ import Home from './views/home/Home.js';
 
 let match;
 let view;
+let resizeTimer = null;
+
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
@@ -45,6 +47,9 @@ const router = async () => {
         view.init();
         view.resizeWindow();
         view.setImage();
+    } else if (match.route.path === '/cicd') {
+        view.init();
+        view.setLayout();
     }
 };
 
@@ -81,9 +86,26 @@ window.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('resize', () => {
-    if (match.route.path !== '/') return;
 
-    // resize 했을 때 성능 이슈 때문에 resizeWindow() method 호출하는 대신 refresh
-    location.reload();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (match.route.path === '/') {
+            // resize 했을 때 성능 이슈 때문에 resizeWindow() method 호출하는 대신 refresh
+            location.reload();
+            // console.log('resize');
+            // view.resizeWindow();
+            // view.drawImage();
+        } else if (match.route.path === '/cicd') {
+            view.setLayout();
+        }
+    }, 500);
     
+
+    
+});
+
+window.addEventListener('scroll', () => {
+    if (match.route.path === '/cicd') {
+        view.scrollLoop(window.pageYOffset);
+    }
 });
