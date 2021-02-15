@@ -298,19 +298,23 @@
   z-index: 10;
   display: flex;
   justify-content: center;
+  align-items: center;
   opacity: 0;
 }
 .complete-message {
   text-align: center;
   letter-spacing: 0.1em;
-  width: 20em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .goto {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
   margin: 0.5em;
-  width: 20em;
+  width: 15em;
   height: 2em;
   background-color: var(--color-black);
   border-radius: 50px;
@@ -332,6 +336,9 @@
   .section-cicd,
   .sticky-elem {
     width: 400px;
+  }
+  .goto {
+    font-size: 1.5rem;
   }
 }
 @media screen and (min-width: 750px) {
