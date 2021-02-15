@@ -130,10 +130,10 @@
   justify-content: center;
 }
 .webpack-message {
+  overflow: hidden;
   white-space: nowrap;
-}
-.webpack-message p {
-  /* font-size: 10em; */
+  width: 0.7em;
+  border-right: 1px solid var(--color-ivory);
 }
 
 .files-image-container {
@@ -179,7 +179,27 @@
   width: 100%;
 }
 
-.dockerfile-image-container {
+.docker-message-container {
+  opacity: 0;
+  justify-content: center;
+}
+.docker-message {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0.7em;
+  border-right: 1px solid var(--color-ivory);
+}
+.push-message-container {
+  opacity: 0;
+  justify-content: center;
+}
+.push-message {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0.7em;
+  border-right: 1px solid var(--color-ivory);
+}
+/* .dockerfile-image-container {
   
   justify-content: center;
   align-items: center;
@@ -190,7 +210,7 @@
 }
 .dockerfile-image img {
   width: 100%;
-}
+} */
 
 .dockerimage-image-container {
   

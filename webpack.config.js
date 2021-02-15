@@ -59,10 +59,10 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, 'frontend'),
-        publicPath: '/frontend/',
+        publicPath: '/dist/',
         hot: true,
         historyApiFallback : {
-            index: '/frontend/index.html'
+            index: '/frontend/index.html/'
         }
     },
 };

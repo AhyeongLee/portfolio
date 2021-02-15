@@ -45,7 +45,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem webpack-message-container">
                 <div class="webpack-message">
-                    <p>webpack build --env production </p>
+                    <p>$ webpack build --env production </p>
                 </div>
             </div>
             <div class="sticky-elem files-image-container">
@@ -71,9 +71,9 @@ export default class extends AbstractView {
                     <img src="/static/images/docker.png" alt="docker">
                 </div>
             </div>
-            <div class="sticky-elem dockerfile-image-container">
-                <div class="dockerfile-image">
-                    <img src="/static/images/dockerfile.png" alt="dockerfile">
+            <div class="sticky-elem docker-message-container">
+                <div class="docker-message">
+                    <p>$ docker image build . </p>
                 </div>
             </div>
             <div class="sticky-elem dockerimage-image-container">
@@ -84,6 +84,11 @@ export default class extends AbstractView {
             <div class="sticky-elem ecr-image-container">
                 <div class="ecr-image">
                     <img src="/static/images/ecr.png" alt="ecr">
+                </div>
+            </div>
+            <div class="sticky-elem push-message-container">
+                <div class="push-message">
+                    <p>$ docker push \${ECR_URL}:\${BUILD_NUM}</p>
                 </div>
             </div>
         </article>
@@ -109,7 +114,16 @@ export default class extends AbstractView {
                 </div>
             </div>
             <div class="sticky-elem codedeploy-loading-container">
-                <p>Deploying...</p>
+                <p>Step 1: Deploying replacement task set</p>
+                <div class="codedeploy-loading">
+                    <div class="codedeploy-loading-ratio"></div>
+                </div>
+                <p>Step 2: Rerouting production traffic to replacement task set</p>
+                <div class="codedeploy-loading">
+                    <div class="codedeploy-loading-ratio"></div>
+                </div>
+                <p>Step 3:
+                Terminate original task set</p>
                 <div class="codedeploy-loading">
                     <div class="codedeploy-loading-ratio"></div>
                 </div>
@@ -145,18 +159,18 @@ export default class extends AbstractView {
                     git_image_translateY_in: [0, -80, { start: 0.1, end: 0.2}],
                     git_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.25 }],
                     git_message_container_translateY_in: [0, 300, { start: 0.15, end: 0.25}],
-                    git_message_width: [0.7, 18.2, { start: 0.3, end: 0.4}],
-                    // 0.42
+                    git_message_width: [0.7, 18.2, { start: 0.25, end: 0.4}],
+                    // 0.48
         
-                    git_loading_container_opacity_in: [0, 1, { start: 0.65, end: 0.7}],
-                    git_loading_ratio_width: [0, 100, { start: 0.7, end: 0.8}],
-                    // 0.82
+                    git_loading_container_opacity_in: [0, 1, { start: 0.5, end: 0.55}],
+                    git_loading_ratio_width: [0, 100, { start: 0.55, end: 0.75}],
+                    // 0.83
                     
         
-                    git_image_opacity_out: [1, 0, { start: 0.45, end: 0.6}],
-                    git_image_translateY_out: [-80, 0, { start: 0.45, end: 0.6}],
-                    git_message_container_opacity_out: [1, 0, { start: 0.45, end: 0.6 }],
-                    git_message_container_translateY_out: [300, 0, { start: 0.45, end: 0.6}],
+                    git_image_opacity_out: [1, 0, { start: 0.45, end: 0.5}],
+                    git_image_translateY_out: [-80, 0, { start: 0.45, end: 0.5}],
+                    git_message_container_opacity_out: [1, 0, { start: 0.45, end: 0.5 }],
+                    git_message_container_translateY_out: [300, 0, { start: 0.45, end: 0.5}],
                     git_loading_container_opacity_out: [1, 0, { start: 0.85, end: 0.9}],
                 }
             },
@@ -168,7 +182,7 @@ export default class extends AbstractView {
                     container: document.querySelector('#scroll-article-1'),
                     webpack_image: document.querySelector('.webpack-image-container'),
                     webpack_message_container: document.querySelector('.webpack-message-container'),
-                    webpack_message: document.querySelector('.webpack-message p'),
+                    webpack_message: document.querySelector('.webpack-message'),
                     files_image: document.querySelector('.files-image-container'),
                     
                     ajs_image: document.querySelector('.ajs-image-container'),
@@ -185,10 +199,12 @@ export default class extends AbstractView {
         
                     webpack_image_opacity_in: [0, 1, { start: 0.05, end: 0.1}],
                     webpack_image_translateY_in: [0, -100, { start: 0.05, end: 0.1}],
-                    webpack_message_container_opacity_in: [0, 1, { start: 0.05, end: 0.1 }],
-                    files_image_opacity_in: [0, 1, { start: 0.15, end: 0.2}],
+                    webpack_message_container_opacity_in: [0, 1, { start: 0.1, end: 0.15 }],
+                    files_image_opacity_in: [0, 1, { start: 0.05, end: 0.1}],
                     // 0.22
                     
+                    webpack_message_width: [0.7, 14, { start: 0.15, end: 0.25}],
+
                     docker_image_translateY_in: [300, 30, {start: 0.5, end: 0.6}],
                     docker_image_opacity_in: [0, 1, {start: 0.5, end: 0.6}],
                     files_image_scale: [1, 0.1, { start: 0.43, end: 0.6}],
@@ -199,7 +215,7 @@ export default class extends AbstractView {
                     ajs_image_translateY_in: [0, 300, {start: 0.65, end: 0.8}],
                     // 0.82
                     
-                    webpack_message_container_opacity_out: [1, 0, { start: 0.25, end: 0.4 }],
+                    webpack_message_container_opacity_out: [1, 0, { start: 0.3, end: 0.35 }],
                     
                     files_image_opacity_out: [1, 0, { start: 0.5, end: 0.55}],
                     ajs_image_opacity_out: [1, 0, {start: 0.85, end: 0.9}],
@@ -219,30 +235,44 @@ export default class extends AbstractView {
                 objs: {
                     container: document.querySelector('#scroll-article-2'),
                     docker_image: document.querySelector('#scroll-article-2 .docker-image-container'),
-                    dockerfile_image: document.querySelector('.dockerfile-image-container'),
+                    docker_message_container: document.querySelector('.docker-message-container'),
+                    docker_message: document.querySelector('.docker-message'),
+                    // dockerfile_image: document.querySelector('.dockerfile-image-container'),
                     dockerimage_image: document.querySelector('.dockerimage-image-container'),
                     ecr_image: document.querySelector('.ecr-image-container'),
+                    push_message_container: document.querySelector('.push-message-container'),
+                    push_message: document.querySelector('.push-message'),
                     docker_image_for_scale: document.querySelector('#scroll-article-2 .docker-image'),
                 },
                 values: {
-                    docker_image_translateY_in: [-300, 0, {start: 0.1, end: 0.2}],
+                    docker_image_translateY_in: [-300, 0, {start: 0.1, end: 0.25}],
                     docker_image_opacity_in: [0, 1, {start: 0.01, end: 0.05}],
                     docker_image_scale_in: [1, 1, {start:0.01, end: 0.05}],
-                    dockerfile_image_translateY_in: [-100, -100, {start: 0.2, end: 0.3}],
-                    dockerfile_image_opacity_in: [0, 1, {start: 0.2, end: 0.3}],
-        
+                    docker_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.2 }],
+                    docker_message_container_translateY_in: [0, -300, { start: 0.15, end: 0.2}],
+                    docker_message_width: [0.7, 9.5, { start: 0.2, end: 0.3}],
+                    // dockerfile_image_translateY_in: [-100, -100, {start: 0.2, end: 0.3}],
+                    // dockerfile_image_opacity_in: [0, 1, {start: 0.2, end: 0.3}],
+                    // 0.32
                     dockerimage_image_opacity_in: [0, 1, {start: 0.5, end: 0.6}],
                     dockerimage_image_translateY_in: [0, 0, {start: 0.5, end: 0.6}],
                     ecr_image_opacity_in: [0, 1, {start: 0.55, end: 0.6}],
-        
-        
+                    push_message_container_opacity_in: [0, 1, { start: 0.55, end: 0.6 }],
+                    push_message_container_translateY_in: [0, -300, { start: 0.55, end: 0.6}],
+                    push_message_width: [0.7, 17.5, { start: 0.6, end: 0.7}],
+            
+                    // 0.73        
+
                     docker_image_scale_out: [1, 3, {start:0.35, end: 0.5}],
-                    
-        
+                
+                    docker_message_container_opacity_out: [1, 0, { start: 0.35, end: 0.4 }],
+                    docker_message_container_translateY_out: [-300, 0, { start: 0.35, end: 0.4}],
                     docker_image_translateY_out: [0, -100, {start: 0.35, end: 0.5}],
-                    dockerfile_image_opacity_out: [1, 0, {start: 0.35, end: 0.5}],
+                    // dockerfile_image_opacity_out: [1, 0, {start: 0.35, end: 0.5}],
                     docker_image_opacity_out: [1, 0, {start: 0.5, end: 0.55}],
-        
+                    push_message_container_opacity_out: [1, 0, { start: 0.6, end: 0.65 }],
+                    push_message_container_translateY_out: [-300, 0, { start: 0.6, end: 0.65}],
+
                     dockerimage_image_opacity_out: [1, 0, {start: 0.8, end: 0.9}],
                     dockerimage_image_translateY_out: [0, -150, {start: 0.8, end: 0.9}],
                     ecr_image_opacity_out: [1, 0, {start: 0.9, end: 0.95}],
@@ -381,7 +411,7 @@ export default class extends AbstractView {
         switch (this.currentArticle) {
             case 0:
                 // console.log('0 play');
-                if (scrollRatio < 0.42) {
+                if (scrollRatio < 0.48) {
                     objs.git_image.style.opacity = this.calcValues(values.git_image_opacity_in, currentYOffset);
                     objs.git_image.style.transform = `translate3d(-50%, ${this.calcValues(values.git_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.git_message_container.style.opacity = this.calcValues(values.git_message_container_opacity_in, currentYOffset); 
@@ -393,7 +423,7 @@ export default class extends AbstractView {
                     objs.git_message_container.style.opacity = this.calcValues(values.git_message_container_opacity_out, currentYOffset);
                     objs.git_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.git_message_container_translateY_out, currentYOffset)}%, 0)`;
                 } 
-                if (scrollRatio < 0.82) {
+                if (scrollRatio < 0.83) {
                     objs.git_loading_ratio.style.width = `${this.calcValues(values.git_loading_ratio_width, currentYOffset)}%`;
                     objs.git_loading_container.style.opacity = this.calcValues(values.git_loading_container_opacity_in, currentYOffset);
                 } else {
@@ -415,6 +445,7 @@ export default class extends AbstractView {
                     
                 } 
                 if (scrollRatio < 0.62) {
+                    objs.webpack_message.style.width = `${this.calcValues(values.webpack_message_width, currentYOffset)}em`;
                     objs.docker_image.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.docker_image.style.opacity = this.calcValues(values.docker_image_opacity_in, currentYOffset);
                     objs.files_image.style.transform = `translate3d(-50%, ${this.calcValues(values.files_image_translateY, currentYOffset)}%, 0)`;
@@ -436,21 +467,31 @@ export default class extends AbstractView {
                 if (scrollRatio < 0.32) {
                     objs.docker_image.style.opacity = this.calcValues(values.docker_image_opacity_in, currentYOffset);
                     objs.docker_image.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_image_translateY_in, currentYOffset)}%, 0)`;
-                    objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_in, currentYOffset);
-                    objs.dockerfile_image.style.transform = `translate3d(-50%, ${this.calcValues(values.dockerfile_image_translateY_in, currentYOffset)}%, 0)`;
+                    objs.docker_message_container.style.opacity = this.calcValues(values.docker_message_container_opacity_in, currentYOffset); 
+                    objs.docker_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_message_container_translateY_in, currentYOffset)}%, 0)`;
+                    // objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_in, currentYOffset);
+                    // objs.dockerfile_image.style.transform = `translate3d(-50%, ${this.calcValues(values.dockerfile_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.docker_image_for_scale.style.transform = `scale(${this.calcValues(values.docker_image_scale_in, currentYOffset)})`;
+                    objs.docker_message.style.width = `${this.calcValues(values.docker_message_width, currentYOffset)}em`;
                 } else {
                     objs.docker_image.style.opacity = this.calcValues(values.docker_image_opacity_out, currentYOffset); 
                     objs.docker_image.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_image_translateY_out, currentYOffset)}%, 0)`;
-                    objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_out, currentYOffset); 
+                    objs.docker_message_container.style.opacity = this.calcValues(values.docker_message_container_opacity_out, currentYOffset); 
+                    objs.docker_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_message_container_translateY_out, currentYOffset)}%, 0)`;
+                    // objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_out, currentYOffset); 
                     objs.docker_image_for_scale.style.transform = `scale(${this.calcValues(values.docker_image_scale_out, currentYOffset)})`;
                     
                 } 
-                if (scrollRatio < 0.62) {
+                if (scrollRatio < 0.73) {
+                    objs.push_message_container.style.opacity = this.calcValues(values.push_message_container_opacity_in, currentYOffset); 
+                    objs.push_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.push_message_container_translateY_in, currentYOffset)}%, 0)`;
+                    objs.push_message.style.width = `${this.calcValues(values.push_message_width, currentYOffset)}em`;
                     objs.dockerimage_image.style.opacity = this.calcValues(values.dockerimage_image_opacity_in, currentYOffset); 
                     objs.dockerimage_image.style.transform = `translate3d(-50%, ${this.calcValues(values.dockerimage_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.ecr_image.style.opacity = this.calcValues(values.ecr_image_opacity_in, currentYOffset); 
                 } else {
+                    objs.push_message_container.style.opacity = this.calcValues(values.push_message_container_opacity_out, currentYOffset); 
+                    objs.push_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.push_message_container_translateY_out, currentYOffset)}%, 0)`;
                     objs.dockerimage_image.style.opacity = this.calcValues(values.dockerimage_image_opacity_out, currentYOffset); 
                     objs.dockerimage_image.style.transform = `translate3d(-50%, ${this.calcValues(values.dockerimage_image_translateY_out, currentYOffset)}%, 0)`;
                     objs.ecr_image.style.opacity = this.calcValues(values.ecr_image_opacity_out, currentYOffset); 
