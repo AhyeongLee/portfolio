@@ -91,12 +91,11 @@ window.addEventListener('resize', () => {
     resizeTimer = setTimeout(() => {
         if (match.route.path === '/') {
             // resize 했을 때 성능 이슈 때문에 resizeWindow() method 호출하는 대신 refresh
-            location.reload();
-            // console.log('resize');
-            // view.resizeWindow();
-            // view.drawImage();
+            // location.reload();
+            view.resizeWindow();
+            view.drawImage();
         } else if (match.route.path === '/cicd') {
-            view.setLayout();
+            view.setLayout(window.pageYOffset);
         }
     }, 500);
     

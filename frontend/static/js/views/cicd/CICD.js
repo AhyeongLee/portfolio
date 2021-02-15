@@ -116,7 +116,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem complete-message-container">
                 <div class="complete-message">
-                    <p>Completed deploy</p>
+                    <p>Deployment is complete!</p>
                     <a class="goto" href="https://aylee.shop" target="_blank">Go to Business Card Maker</a>
                 </div>
             </div>
@@ -298,11 +298,8 @@ export default class extends AbstractView {
         ];
     }
 
-    setLayout = () => {
-        document.body.style.background = 'rgb(19, 49, 56)';
-        document.body.style.display = 'flex';
-        document.body.style.flexDirection = 'column';
-        document.body.style.alignItems = 'center';
+    setLayout = (yOffset) => {
+        
         this.articleInfo.forEach( info => {
             if (info.type === 'sticky') {
                 info.scrollHeight = info.heightNum * window.innerHeight;
@@ -320,14 +317,11 @@ export default class extends AbstractView {
             }
         }
         document.body.setAttribute('id', `show-article-${this.currentArticle}`);
+        this.scrollLoop(yOffset);
     }
     
     scrollLoop = (yOffset) => {
         this.yOffset = yOffset;
-        this.prevScrollHeight = 0;
-        for (let i = 0; i< this.currentArticle; i++) {
-            this.prevScrollHeight += this.articleInfo[i].scrollHeight;
-        }
     
         if (this.yOffset > this.prevScrollHeight + this.articleInfo[this.currentArticle].scrollHeight) {
             if (this.currentArticle === this.articleInfo.length - 1) return;
@@ -339,6 +333,11 @@ export default class extends AbstractView {
             if (this.currentArticle === 0) return;
             this.currentArticle--;
             document.body.setAttribute('id', `show-article-${this.currentArticle}`);
+        }
+
+        this.prevScrollHeight = 0;
+        for (let i = 0; i< this.currentArticle; i++) {
+            this.prevScrollHeight += this.articleInfo[i].scrollHeight;
         }
         
         this.playAnimation();
