@@ -48,7 +48,7 @@ nav:before {
   height: 100%;
   /* background: inherit; */
   /* filter: blur(1px); */
-  box-shadow: inset 0 0 0 500px rgba(255, 255, 255, 0.288);
+  box-shadow: inset 0 0 0 500px rgba(255, 255, 255, 0.7);
 }
 ul {
   box-sizing: border-box;

@@ -13,7 +13,7 @@ export default class extends AbstractView {
             <div class="welcome">
                 <div class="hello">
                     <h1>Hello,</h1>
-                    <h1> this is Ahyeong</h1>
+                    <h1> I am Ahyeong</h1>
                 </div>
                 <h2>Welcome to my portfolio!</h2>
             </div>

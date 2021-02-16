@@ -61,7 +61,6 @@
 
 .git-image-container {
   /* width: 100%; */
-  
 
   justify-content: center;
   align-items: center;
@@ -74,7 +73,6 @@
   width: 100%;
 }
 .git-message-container {
-  
   justify-content: center;
   opacity: 0;
 }
@@ -114,7 +112,7 @@
 
 .webpack-image-container {
   z-index: 10;
-  
+
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -139,7 +137,7 @@
 .files-image-container {
   box-sizing: border-box;
   top: 55%;
-  
+
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -154,7 +152,7 @@
 .ajs-image-container {
   z-index: -1;
   top: 20%;
-  
+
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -167,7 +165,7 @@
 }
 .docker-image-container {
   z-index: 10;
-  
+
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -213,7 +211,6 @@
 } */
 
 .dockerimage-image-container {
-  
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -226,11 +223,10 @@
 }
 
 .ecr-image-container {
-  
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transform: translate3d(-50%, -200%, 0);
+  transform: translate3d(-50%, -150%, 0);
 }
 .ecr-image {
   width: 50%;
@@ -240,7 +236,6 @@
 }
 
 .ecs-image-container {
-  
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -253,7 +248,6 @@
 }
 
 .ecs-message-container {
-  
   justify-content: center;
   opacity: 0;
 }
@@ -264,7 +258,6 @@
 }
 
 .codedeploy-image-container {
-  
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -277,35 +270,47 @@
 }
 
 .codedeploy-message-container {
-  
   justify-content: center;
   opacity: 0;
 }
 .codedeploy-message {
   text-align: center;
   letter-spacing: 0.1em;
-  width: 15em;
+  /* width: 15em; */
 }
 .codedeploy-loading-container {
   flex-direction: column;
   align-items: center;
-
+  transform: translate3d(-50%, -30%, 0);
   opacity: 0;
 }
-.codedeploy-loading-container p {
-  margin-bottom: 1em;
-  letter-spacing: 0.05em;
+.codedeploy-loading-container h1 {
+  font-size: 1.5em;
+  padding-bottom: 1.5em;
   animation: blinking 0.7s linear alternate infinite;
+}
+.codedeploy-loading-container p {
+  font-size: 0.9em;
+  /* width: 22em; */
+  width: 75%;
+  margin-bottom: 0.2em;
+  letter-spacing: 0.05em;
+}
+.codedeploy-loading-container small {
+  font-size: 0.6em;
 }
 .codedeploy-loading {
   position: relative;
   width: 75%;
   height: 15px;
+  margin: 1em 0;
   border: 1px solid var(--color-ivory);
   border-radius: 15px;
   overflow: hidden;
 }
-.codedeploy-loading-ratio {
+.codedeploy-loading-ratio-1,
+.codedeploy-loading-ratio-2,
+.codedeploy-loading-ratio-3 {
   position: absolute;
   left: 0;
   width: 100%;
@@ -316,7 +321,7 @@
 
 .complete-message-container {
   z-index: 10;
-  
+
   justify-content: center;
   align-items: center;
   opacity: 0;
