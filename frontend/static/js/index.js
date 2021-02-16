@@ -73,14 +73,12 @@ window.addEventListener('mousemove', (e) => {
         view.mouseX = e.layerX;
         view.mouseY = e.layerY;
     } else {
-        if (view.isPlaying) {
-            view.isPlaying = false;
-            view.pixels.forEach(pixel => {
-                pixel.clearSpeed();
-            });
-        } else {
-            return;
-        }
+        if (!view.isPlaying) return;
+        
+        view.isPlaying = false;
+        view.pixels.forEach(pixel => {
+            pixel.clearSpeed();
+        });
     }
 
 });

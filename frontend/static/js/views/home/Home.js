@@ -50,10 +50,14 @@ export default class extends AbstractView {
         this.startY = Math.floor(this.canvas.height/2 - this.img.height*this.imageRatio/2);
         this.ctx.drawImage(this.img, this.startX, this.startY , this.img.width * this.imageRatio , this.img.height * this.imageRatio );
         
+        if ("ontouchstart" in document.documentElement) {
+            return;
+        }
         this.getImageData();
     }
     getImageData = () => {
         const imageData = this.ctx.getImageData(0, 0, this.img.width, this.img.height ).data;
+        
         for (let i = 0; i < imageData.length / (4 * this.circleSize); i++) {
             if (imageData[i * 4 * this.circleSize] === 0) continue;
 
@@ -87,7 +91,10 @@ export default class extends AbstractView {
         
         // this.canvas.width = this.canvasWidth;
         this.canvas.width = window.innerWidth * 0.9;
+        
         if ("ontouchstart" in document.documentElement) {
+            console.log('ontouch');
+            return;
             this.circleSize = 2;
             this.distanceLimit = 50;
             this.mouseSize = 25;    
