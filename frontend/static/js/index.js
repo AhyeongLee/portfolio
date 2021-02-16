@@ -68,18 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener('mousemove', (e) => {
     if ("ontouchstart" in document.documentElement) return;
     if (match.route.path !== '/') return;
-    if (e.target === view.canvas){
-        view.isPlaying = true;
-        view.mouseX = e.layerX;
-        view.mouseY = e.layerY;
-    } else {
-        if (!view.isPlaying) return;
+    view.setMouseLocation(e.clientX, e.clientY);
+    // if (e.target === view.canvas){
+    //     view.setIsPlaying(true);
+    //     view.setMouseLocation(e.clientX, e.clientY);
+    // } else {
+    //     if (!view.isPlaying) return;
         
-        view.isPlaying = false;
-        view.pixels.forEach(pixel => {
-            pixel.clearSpeed();
-        });
-    }
+    //     view.setIsPlaying(false);
+    //     view.pixels.forEach(pixel => {
+    //         pixel.clearSpeed();
+    //     });
+    // }
 
 });
 

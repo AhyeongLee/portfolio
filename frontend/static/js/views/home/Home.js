@@ -140,6 +140,13 @@ export default class extends AbstractView {
         this.pixels = [];
 
     }
+    setIsPlaying = (param) => {
+        this.isPlaying = param;
+    }
+    setMouseLocation = (x, y) => {
+        this.mouseX = x - this.canvasX;
+        this.mouseY = y - this.canvasY;
+    }
 
 
 }
