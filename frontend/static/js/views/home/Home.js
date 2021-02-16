@@ -19,7 +19,7 @@ export default class extends AbstractView {
             </div>
             <canvas class="canvas"></canvas>
             <div class="descriptions">
-                <p>I'm a front-end web developer who can handle CI/CD process and AWS.</p>햣
+                <p>I'm a front-end web developer who can handle CI/CD process and AWS.</p>
                 <p>The icons shown above are the skills I have learned and experienced.</p>
             </div>
         `;
