@@ -1,0 +1,67 @@
+@import './root.css';
+
+.section-frontend {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - var(--nav-height) - var(--footer-height));
+    flex-direction: column;
+    align-items: center;
+  }
+.frontend-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.project-name {
+    text-align: center;
+}
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.project-descriptions {
+    width: 15em;
+    /* text-align: justify; */
+    letter-spacing: 0.1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gauge-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    z-index: 100;
+
+}
+.gauge-container circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #eee;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate3d(20px, 20px, 0);
+}
+.gauge-container .guage-bar {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    stroke: green;
+}
