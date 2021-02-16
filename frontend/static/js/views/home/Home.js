@@ -51,6 +51,7 @@ export default class extends AbstractView {
         this.ctx.drawImage(this.img, this.startX, this.startY , this.img.width * this.imageRatio , this.img.height * this.imageRatio );
         
         if ("ontouchstart" in document.documentElement) {
+            
             return;
         }
         this.getImageData();
@@ -94,6 +95,10 @@ export default class extends AbstractView {
         
         if ("ontouchstart" in document.documentElement) {
             console.log('ontouch');
+            this.canvas.width *= 2;
+            this.canvas.height = this.canvas.width * this.canvasRatio;
+            this.canvas.style.width = `${this.canvas.width/2}px`;
+            this.canvas.style.height = `${this.canvas.height/2}px`;
             return;
             this.circleSize = 2;
             this.distanceLimit = 50;
