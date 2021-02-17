@@ -6,5 +6,6 @@ then
 else
     kill -9 ${PID}    
 fi
-sudo npm install --only=prod
+cd /home/jenkins/deploy
+npm install --only=prod
 node server.js &
