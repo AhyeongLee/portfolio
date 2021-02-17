@@ -39,11 +39,11 @@ pipeline {
                     try {
                         sh "mkdir tmp"
 
-                        sh "sudo cp -r frontend/dist tmp/frontend/dist"
-                        sh "sudo cp -r frontend/static/css tmp/frontend/static/css"
-                        sh "sudo cp -r frontend/static/images tmp/frontend/static/images"
-                        sh "sudo cp frontend/index.html tmp/frontend/index.html"
-                        sh "sudo cp server.js tmp/server.js"
+                        sh "sudo cp -r frontend/dist tmp/"
+                        sh "sudo cp -r frontend/static/css tmp/"
+                        sh "sudo cp -r frontend/static/images tmp/"
+                        sh "sudo cp frontend/index.html tmp/"
+                        sh "sudo cp server.js tmp/"
 
                         dir("${JENKINS_HOME}/workspace/${JOB_NAME}/tmp") {
                             createAppspecAndUpload()
