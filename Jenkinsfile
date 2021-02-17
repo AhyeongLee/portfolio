@@ -46,7 +46,7 @@ pipeline {
                         sh "sudo cp frontend/index.html tmp/frontend/"
                         sh "sudo cp server.js tmp/"
                         sh "sudo cp webpack.config.js tmp/"
-                        sh "sudo deploy.sh tmp/"
+                        sh "sudo cp deploy.sh tmp/"
 
                         dir("${JENKINS_HOME}/workspace/${JOB_NAME}/tmp") {
                             createAppspecAndUpload()
