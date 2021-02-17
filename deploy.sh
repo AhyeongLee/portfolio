@@ -6,5 +6,5 @@ then
 else
     kill -9 ${PID}    
 fi
-npm install --only=prod
+sudo npm install --only=prod
 node server.js &
