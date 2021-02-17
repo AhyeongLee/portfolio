@@ -3,7 +3,7 @@ import groovy.transform.Field
 @Field def S3_BUCKET = "aylee-deploy"
 
 @Field def REVISION = ""
-def DEPLOYMENT_GROUP = "dev"
+@Field def DEPLOYMENT_GROUP = "dev"
 
 pipeline {
     agent any
@@ -38,11 +38,12 @@ pipeline {
                 script {
                     try {
                         sh "mkdir tmp"
+                        sh "mkdir tmp/frontend"
 
-                        sh "sudo cp -r frontend/dist tmp/"
-                        sh "sudo cp -r frontend/static/css tmp/"
-                        sh "sudo cp -r frontend/static/images tmp/"
-                        sh "sudo cp frontend/index.html tmp/"
+                        sh "sudo cp -r frontend/dist tmp/frontend/"
+                        sh "sudo cp -r frontend/static/css tmp/frontend/"
+                        sh "sudo cp -r frontend/static/images tmp/frontend/"
+                        sh "sudo cp frontend/index.html tmp/frontend/"
                         sh "sudo cp server.js tmp/"
 
                         dir("${JENKINS_HOME}/workspace/${JOB_NAME}/tmp") {
@@ -58,53 +59,53 @@ pipeline {
                 }
             }
         }
-//         stage('Deploy') {
-//             when {
-//                 expression {
-//                     return env.zipResult ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/
-//                 }
-//             }
-//             steps {
-//                 script {
-//                     try {
+        stage('Deploy') {
+            when {
+                expression {
+                    return env.zipResult ==~ /(?i)(Y|YES|T|TRUE|ON|RUN)/
+                }
+            }
+            steps {
+                script {
+                    try {
                         
-//                         def cmd = """
-// aws deploy create-deployment \
-//     --application-name ${JOB_NAME} \
-//     --deployment-group-name ${DEPLOYMENT_GROUP} \
-//     --s3-location bucket=${S3_BUCKET},key=${JOB_NAME}/${DEPLOYMENT_GROUP}/appspec.zip,bundleType=zip | jq '.deploymentId' -r
-//                         """
+                        def cmd = """
+aws deploy create-deployment \
+    --application-name ${JOB_NAME} \
+    --deployment-group-name ${DEPLOYMENT_GROUP} \
+    --s3-location bucket=${S3_BUCKET},key=${JOB_NAME}/${DEPLOYMENT_GROUP}/appspec.zip,bundleType=zip | jq '.deploymentId' -r
+                        """
 
-//                         def deploymentId = withAWS(credentials:"aws-access-key", region: 'ap-northeast-2') {
-//                             return executeAwsCliByReturn(cmd)
-//                         }
+                        def deploymentId = withAWS(credentials:"aws-access-key", region: 'ap-northeast-2') {
+                            return executeAwsCliByReturn(cmd)
+                        }
                         
 
-//                         cmd = "aws deploy get-deployment --deployment-id ${deploymentId} | jq '.deploymentInfo.status' -r"
-//                         def result = ""
-//                         timeout(unit: 'SECONDS', time: 600) {
-//                             while ("${result}" != "Succeeded") {
-//                                 if ("${result}" == "Failed") {
-//                                     exit 1
-//                                 }
-//                                 result = withAWS(credentials:"aws-access-key", region: 'ap-northeast-2') {
-//                                     return executeAwsCliByReturn(cmd)
-//                                 }
-//                                 print("${result}")
-//                                 sleep(15)
-//                             }
-//                         }
+                        cmd = "aws deploy get-deployment --deployment-id ${deploymentId} | jq '.deploymentInfo.status' -r"
+                        def result = ""
+                        timeout(unit: 'SECONDS', time: 600) {
+                            while ("${result}" != "Succeeded") {
+                                if ("${result}" == "Failed") {
+                                    exit 1
+                                }
+                                result = withAWS(credentials:"aws-access-key", region: 'ap-northeast-2') {
+                                    return executeAwsCliByReturn(cmd)
+                                }
+                                print("${result}")
+                                sleep(15)
+                            }
+                        }
 
-//                     } catch(Exception e) {
-//                         print(e)
-//                         cleanWs()
-//                         currentBuild.result = 'FAILURE'
-//                     } finally {
-//                         cleanWs()
-//                     }
-//                 }
-//             }
-//         }
+                    } catch(Exception e) {
+                        print(e)
+                        cleanWs()
+                        currentBuild.result = 'FAILURE'
+                    } finally {
+                        cleanWs()
+                    }
+                }
+            }
+        }
     }
 }
 
