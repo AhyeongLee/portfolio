@@ -8,4 +8,4 @@ else
 fi
 cd /home/jenkins/deploy
 npm install --only=prod
-node server.js &
+node server.js > /dev/null 2> /dev/null < /dev/null &
