@@ -45,6 +45,8 @@ pipeline {
                         sh "sudo cp -r frontend/static/images tmp/frontend/"
                         sh "sudo cp frontend/index.html tmp/frontend/"
                         sh "sudo cp server.js tmp/"
+                        sh "sudo cp webpack.config.js tmp/"
+                        sh "sudo deploy.sh tmp/"
 
                         dir("${JENKINS_HOME}/workspace/${JOB_NAME}/tmp") {
                             createAppspecAndUpload()
@@ -131,14 +133,6 @@ hooks:
     - location: deploy.sh
       timeout: 60
       runas: root
-EOF
-    """
-
-    sh """
-cat << EOF > deploy.sh
-#!/bin/bash
-kill -9 `ps -ef | grep server.js | grep -v grep | awk '{print \$2}'`
-nohup node server.js 1> /dev/null 2>&1 &
 EOF
     """
 
