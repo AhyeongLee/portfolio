@@ -4,7 +4,7 @@ if [[ ${PID} -eq "" ]]
 then
     echo "none"
 else
-    kill -9 ${PID}
-    npm install --only=prod
-    node server.js &
+    kill -9 ${PID}    
 fi
+npm install --only=prod
+node server.js &
