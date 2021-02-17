@@ -1,67 +1,167 @@
-@import './root.css';
+@import "./root.css";
 
 .section-frontend {
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    height: calc(100% - var(--nav-height) - var(--footer-height));
-    flex-direction: column;
-    align-items: center;
-  }
-.frontend-article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  padding: calc(var(--nav-height) + 2em) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.project-name {
-    text-align: center;
+.frontend-article {
+  box-sizing: border-box;
+  padding: 0 var(--padding);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .project-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.project-name {
+  font-size: 1.5rem;
+  text-align: center;
 }
 .image-container {
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
+  display: block;
+  box-sizing: border-box;
+  margin: 1em;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 5px 5px 15px 5px #505050;
 }
 .image-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.image-container:hover img {
+  transform: scale(1.2);
+  transition: transform 0.7s ease;
 }
 .project-descriptions {
-    width: 15em;
-    /* text-align: justify; */
-    letter-spacing: 0.1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  /* padding: 0 var(--padding); */
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  text-align: center;
+  word-break: break-all;
+  color: black;
+}
+.project-skills {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--padding);
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.code-btn {
+  width: 8em;
+  height: 1.5em;
+  background-color: var(--color-blue);
+  border-radius: 1em;
+  margin-top: 1em;
+}
+.code-btn:hover {
+  background-color: var(--color-coral);
+}
+.circle-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+.skill-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skill-container .skill {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
 }
 .gauge-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    z-index: 100;
-
+  position: relative;
+  width: 90px;
+  height: 90px;
+  padding: 0 0.5em;
+  z-index: 100;
+  transform: rotate(-90deg);
 }
+
 .gauge-container circle {
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke: #eee;
-    stroke-width: 10;
-    stroke-linecap: round;
-    transform: translate3d(20px, 20px, 0);
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #eee;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transform: translate3d(5px, 5px, 0);
 }
 .gauge-container .guage-bar {
-    stroke-dasharray: 220;
-    stroke-dashoffset: 220;
-    stroke: green;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 2s;
+  /* animation: progress 2s linear forwards; */
+}
+.react-container .guage-bar {
+  stroke: #0096fa;
+}
+.html-container .guage-bar {
+  stroke: #ff0d80;
+}
+.css-container .guage-bar {
+  stroke: #27db77;
+}
+.etc-container .guage-bar {
+  stroke: #530be3;
+}
+.gauge-container:hover .guage-bar {
+  stroke-dashoffset: 0;
+}
+@keyframes progress {
+  0% {
+    stroke-dashoffset: 500;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .frontend-article {
+    padding: 0 var(--padding-l);
+  }
+}
+@media screen and (min-width: 750px) {
+  .frontend-article {
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 var(--padding-xl);
+  }
+  .project-info,
+  .project-skills {
+    width: 22em;
+  }
 }

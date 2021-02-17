@@ -3,13 +3,11 @@
 .section-home {
   box-sizing: border-box;
   width: 100%;
-  height: calc(100% - var(--nav-height) - var(--footer-height));
-  padding: 1.5em var(--padding);
+  padding: calc(var(--nav-height) + 2em) var(--padding);
   /* min-height: 740px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 .hello {
   display: flex;
@@ -20,28 +18,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
 }
 .welcome h1 {
   font-size: 2.3rem;
   font-weight: 700;
   padding-bottom: 0.5em;
   letter-spacing: 0.05em;
-  color: var(--color-ivory);
+  color: var(--color-blue);
 }
 .welcome h2 {
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--color-ivory);
+  color: var(--color-blue);
 }
 
 .descriptions > p {
   text-align: center;
   font-size: 1rem;
   letter-spacing: 0.05em;
+  font-family: "Nanum Myeongjo", serif;
+  color: black;
+  flex-shrink: 0;
 }
 
-@media screen and (min-width: var(--media-width-s)) {
+@media screen and (min-width: 420px) {
   .welcome h1 {
     font-size: 2.8rem;
   }
@@ -53,7 +55,7 @@
     font-size: 1.3rem;
   }
   .section-home {
-    padding: 2em var(--padding-l);
+    padding: calc(var(--nav-height) + 2em) var(--padding-l);
     /* min-height: 650px; */
   }
 }
@@ -63,13 +65,14 @@
   }
 
   .section-home {
-    padding: 3.5em var(--padding-xl);
-    /* min-height: 750px; */
+    padding: calc(var(--nav-height) + 2em) var(--padding-xl);
+    /* padding: calc(3.5em + var(--nav-height)) var(--padding-xl); */
+    /* min-height: 650px; */
   }
 }
 
 @media screen and (min-width: 1024px) {
   .section-home {
-    padding: 3.5em calc((100% - 900px) / 2);
+    /* padding: 3.5em calc((100% - 900px) / 2); */
   }
 }

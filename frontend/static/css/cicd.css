@@ -9,10 +9,14 @@
 
 .section-cicd {
   position: relative;
-  box-sizing: border-box;
   width: 100%;
-  height: calc(100% - var(--nav-height) - var(--footer-height));
-  background-color: rgb(19, 49, 56);
+  padding: calc(var(--nav-height) + 2em) 0;
+  /* background-color: rgb(19, 49, 56); */
+}
+
+.jenkins-container {
+  width: 100vw;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -26,12 +30,12 @@
   padding-bottom: 2em;
 }
 .jenkins-image {
-  width: 25%;
+  width: 15%;
 }
 .jenkins-message {
   box-sizing: border-box;
   padding-left: 1.5em;
-  width: 50%;
+  width: 30%;
 }
 
 @keyframes blinking {
@@ -333,6 +337,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
 }
 
 .goto {
@@ -341,14 +346,14 @@
   margin: 0.5em;
   width: 15em;
   height: 2em;
-  background-color: var(--color-black);
+  background-color: var(--color-blue);
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .goto:hover {
-  background-color: var(--color-charcoal);
+  background-color: var(--color-coral);
 }
 .goto:link,
 .goto:visited,

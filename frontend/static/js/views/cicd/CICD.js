@@ -14,11 +14,13 @@ export default class extends AbstractView {
     getHtml = async () => {
         return `
         <article id="scroll-article-0">
-            <div class=jenkins>
-                <img class="jenkins-image" src="/static/images/jenkins.png" alt="jenkins">
-                <p class="jenkins-message">I'm ganna deploy a web application, Business Card Maker</p>
+            <div class="jenkins-container">
+                <div class="jenkins">
+                    <img class="jenkins-image" src="/static/images/jenkins.png" alt="jenkins">
+                    <p class="jenkins-message">I'm ganna deploy a web application, Business Card Maker</p>
+                </div>
+                <p class="scroll-message">Scroll down and the deploy will start!</p>
             </div>
-            <p class="scroll-message">Scroll down and the deploy will start!</p>
             <div class="sticky-elem git-image-container">
                 <div class="git-image">
                     <img src="/static/images/git.png" alt="git">
