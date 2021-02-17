@@ -135,7 +135,7 @@ EOF
     sh """
 cat << EOF > deploy.sh
 #!/bin/bash
-kill -9 \`ps -ef | grep server.js | grep -v grep | awk '{print \$2}'\`
+kill -9 `ps -ef | grep server.js | grep -v grep | awk '{print \$2}'`
 nohup node server.js 1> /dev/null 2>&1 &
 EOF
     """
