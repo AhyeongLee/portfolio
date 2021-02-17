@@ -45,7 +45,8 @@ pipeline {
                         sh "sudo cp -r frontend/static/images tmp/frontend/"
                         sh "sudo cp frontend/index.html tmp/frontend/"
                         sh "sudo cp server.js tmp/"
-                        sh "sudo cp webpack.config.js tmp/"
+                        sh "sudo cp package.json tmp/"
+                        sh "sudo cp package-lock.json tmp/"
                         sh "sudo cp deploy.sh tmp/"
 
                         dir("${JENKINS_HOME}/workspace/${JOB_NAME}/tmp") {
