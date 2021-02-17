@@ -42,7 +42,8 @@ export default class extends AbstractView {
     }
     setImage = () => {
         this.img.src = '/static/images/home.png';
-        this.img.onload = this.drawImage;
+        // this.img.onload = this.drawImage;
+        this.img.addEventListener('load', this.drawImage);
     }
     drawImage = () => {
         this.imageRatio = this.canvas.width / this.img.width * 0.65;
