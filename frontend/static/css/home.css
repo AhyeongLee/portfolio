@@ -24,21 +24,20 @@
   font-size: 2.3rem;
   font-weight: 700;
   padding-bottom: 0.5em;
-  letter-spacing: 0.05em;
+  
   color: var(--color-blue);
 }
 .welcome h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--color-blue);
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
 }
 
 .descriptions > p {
   text-align: center;
+  padding: 0.5em 0;
   font-size: 1rem;
   letter-spacing: 0.05em;
-  font-family: "Nanum Myeongjo", serif;
   color: black;
   flex-shrink: 0;
 }
@@ -48,7 +47,7 @@
     font-size: 2.8rem;
   }
   .welcome h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .descriptions > p {

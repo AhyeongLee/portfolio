@@ -1,6 +1,7 @@
 @import "./root.css";
 
 .section-frontend {
+  box-sizing: border-box;
   position: relative;
   width: 100%;
   padding: calc(var(--nav-height) + 2em) 0;
@@ -8,9 +9,12 @@
   flex-direction: column;
   align-items: center;
 }
+.frontend-h1 {
+  padding-bottom: 1em;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
 .frontend-article {
-  box-sizing: border-box;
-  padding: 0 var(--padding);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,8 +29,11 @@
   align-items: center;
 }
 .project-name {
+  padding: 0.5em 0;
   font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
+  color: black;
 }
 .image-container {
   display: block;
@@ -51,38 +58,50 @@
 .project-descriptions {
   box-sizing: border-box;
   width: 100%;
-  /* padding: 0 var(--padding); */
-  font-family: "Nanum Myeongjo", serif;
-  font-size: 0.8em;
+  padding: 0.2em 0;
+  font-size: 0.9em;
   line-height: 1.2em;
   text-align: center;
-  word-break: break-all;
   color: black;
 }
 .project-skills {
   box-sizing: border-box;
   width: 100%;
-  padding: 0 var(--padding);
+  padding-bottom: 4em;
   text-align: center;
   letter-spacing: 0.1em;
   line-height: 1.5em;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 .code-btn {
   width: 8em;
-  height: 1.5em;
-  background-color: var(--color-blue);
+  height: 2em;
+  color: black;
   border-radius: 1em;
   margin-top: 1em;
+  border-bottom: 0.2em solid var(--color-coral);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .code-btn:hover {
   background-color: var(--color-coral);
+  border-bottom: 0.2em solid var(--color-background);
+}
+.code-btn:link,
+.code-btn:visited,
+.code-btn:active{
+  color: var(--color-blue);
+}
+.code-btn:hover  {
+  color: var(--color-ivory);
 }
 .circle-box {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: center;
   padding-top: 1em;
@@ -106,7 +125,7 @@
   width: 90px;
   height: 90px;
   padding: 0 0.5em;
-  z-index: 100;
+  z-index: 5;
   transform: rotate(-90deg);
 }
 
@@ -119,49 +138,69 @@
   stroke-linecap: round;
   transform: translate3d(5px, 5px, 0);
 }
-.gauge-container .guage-bar {
-  stroke-dasharray: 500;
-  stroke-dashoffset: 0;
+.gauge-container .gauge-bar {
+  stroke-dasharray: 251;
   transition: stroke-dashoffset 2s;
-  /* animation: progress 2s linear forwards; */
 }
-.react-container .guage-bar {
+.react-container .gauge-bar {
   stroke: #0096fa;
+  stroke-dashoffset: 251;
+  animation: react-progress 2s 0.3s linear forwards;
 }
-.html-container .guage-bar {
+.html-container .gauge-bar {
   stroke: #ff0d80;
+  stroke-dashoffset: 251;
+  animation: html-progress 2s 0.3s linear forwards;
 }
-.css-container .guage-bar {
+.css-container .gauge-bar {
   stroke: #27db77;
+  stroke-dashoffset: 251;
+  animation: css-progress 2s 0.3s linear forwards;
 }
-.etc-container .guage-bar {
+.etc-container .gauge-bar {
   stroke: #530be3;
+  stroke-dashoffset: 251;
+  animation: etc-progress 2s 0.3s linear forwards;
 }
-.gauge-container:hover .guage-bar {
+/* .gauge-container:hover .gauge-bar {
   stroke-dashoffset: 0;
-}
-@keyframes progress {
-  0% {
-    stroke-dashoffset: 500;
-  }
+} */
+@keyframes react-progress {
   100% {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 50;
+  }
+}
+@keyframes html-progress {
+  100% {
+    stroke-dashoffset: 200;
+  }
+}
+@keyframes css-progress {
+  100% {
+    stroke-dashoffset: 150;
+  }
+}
+@keyframes etc-progress {
+  100% {
+    stroke-dashoffset: 100;
   }
 }
 
 @media screen and (min-width: 420px) {
-  .frontend-article {
-    padding: 0 var(--padding-l);
+  .section-frontend {
+    padding: calc(var(--nav-height) + 2em) var(--padding-l);
   }
 }
 @media screen and (min-width: 750px) {
+  .section-frontend {
+    padding: calc(var(--nav-height) + 2em) var(--padding-xl);
+  }
   .frontend-article {
     flex-direction: row;
     justify-content: center;
-    padding: 0 var(--padding-xl);
   }
-  .project-info,
-  .project-skills {
-    width: 22em;
-  }
+
 }
+
+
+

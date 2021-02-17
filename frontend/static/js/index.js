@@ -47,6 +47,8 @@ const router = async () => {
         view.init();
         view.resizeWindow();
         view.setImage();
+    } else if (match.route.path === '/frontend') {
+        
     } else if (match.route.path === '/cicd') {
         view.init();
         view.setLayout();
@@ -69,18 +71,6 @@ window.addEventListener('mousemove', (e) => {
     if ("ontouchstart" in document.documentElement) return;
     if (match.route.path !== '/') return;
     view.setMouseLocation(e.clientX, e.clientY);
-    // if (e.target === view.canvas){
-    //     view.setIsPlaying(true);
-    //     view.setMouseLocation(e.clientX, e.clientY);
-    // } else {
-    //     if (!view.isPlaying) return;
-        
-    //     view.setIsPlaying(false);
-    //     view.pixels.forEach(pixel => {
-    //         pixel.clearSpeed();
-    //     });
-    // }
-
 });
 
 window.addEventListener('resize', () => {

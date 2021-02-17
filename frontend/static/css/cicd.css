@@ -1,21 +1,25 @@
 @import "./root.css";
 
+
+.section-cicd {
+  position: relative;
+  width: 100%;
+  padding: calc(var(--nav-height) + 2em) 0;
+}
+.section-cicd img {
+  width: 100%;
+}
 #show-article-0 #scroll-article-0 .sticky-elem,
 #show-article-1 #scroll-article-1 .sticky-elem,
 #show-article-2 #scroll-article-2 .sticky-elem,
 #show-article-3 #scroll-article-3 .sticky-elem {
   display: flex;
 }
-
-.section-cicd {
-  position: relative;
+#scroll-article-0 {
   width: 100%;
-  padding: calc(var(--nav-height) + 2em) 0;
-  /* background-color: rgb(19, 49, 56); */
 }
-
 .jenkins-container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,13 +33,14 @@
   transform: translateY(20%);
   padding-bottom: 2em;
 }
-.jenkins-image {
+.jenkins .jenkins-image {
   width: 15%;
 }
 .jenkins-message {
   box-sizing: border-box;
   padding-left: 1.5em;
-  width: 30%;
+  width: 45%;
+  font-weight: 700;
 }
 
 @keyframes blinking {
@@ -47,10 +52,10 @@
   }
 }
 .scroll-message {
-  /* position: absolute; */
   margin-top: 1em;
   width: 100%;
   text-align: center;
+  font-weight: 700;
   animation: blinking 0.7s linear alternate infinite;
 }
 .sticky-elem {
@@ -62,19 +67,20 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.command {
+  font-size: 0.86em;
+  font-weight: 700;
+  word-spacing: -0.1em;
 
+  color: black;
+}
 .git-image-container {
-  /* width: 100%; */
-
   justify-content: center;
   align-items: center;
   opacity: 0;
 }
 .git-image {
   width: 40%;
-}
-.git-image img {
-  width: 100%;
 }
 .git-message-container {
   justify-content: center;
@@ -89,12 +95,10 @@
 .git-loading-container {
   flex-direction: column;
   align-items: center;
-
   opacity: 0;
 }
 .git-loading-container p {
   margin-bottom: 1em;
-  letter-spacing: 0.05em;
   animation: blinking 0.7s linear alternate infinite;
 }
 .git-loading {
@@ -124,9 +128,7 @@
 .webpack-image {
   width: 50%;
 }
-.webpack-image img {
-  width: 100%;
-}
+
 .webpack-message-container {
   opacity: 0;
   justify-content: center;
@@ -149,9 +151,7 @@
 .files-image {
   width: 50%;
 }
-.files-image img {
-  width: 100%;
-}
+
 
 .ajs-image-container {
   z-index: -1;
@@ -164,9 +164,7 @@
 .ajs-image {
   width: 20%;
 }
-.ajs-image img {
-  width: 100%;
-}
+
 .docker-image-container {
   z-index: 10;
 
@@ -177,9 +175,7 @@
 .docker-image {
   width: 70%;
 }
-.docker-image img {
-  width: 100%;
-}
+
 
 .docker-message-container {
   opacity: 0;
@@ -201,18 +197,6 @@
   width: 0.7em;
   border-right: 1px solid var(--color-ivory);
 }
-/* .dockerfile-image-container {
-  
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-}
-.dockerfile-image {
-  width: 50%;
-}
-.dockerfile-image img {
-  width: 100%;
-} */
 
 .dockerimage-image-container {
   justify-content: center;
@@ -221,9 +205,6 @@
 }
 .dockerimage-image {
   width: 50%;
-}
-.dockerimage-image img {
-  width: 100%;
 }
 
 .ecr-image-container {
@@ -235,9 +216,6 @@
 .ecr-image {
   width: 50%;
 }
-.ecr-image img {
-  width: 100%;
-}
 
 .ecs-image-container {
   justify-content: center;
@@ -247,9 +225,6 @@
 .ecs-image {
   width: 30%;
 }
-.ecs-image img {
-  width: 100%;
-}
 
 .ecs-message-container {
   justify-content: center;
@@ -257,7 +232,6 @@
 }
 .ecs-message {
   text-align: center;
-  letter-spacing: 0.1em;
   width: 15em;
 }
 
@@ -269,9 +243,6 @@
 .codedeploy-image {
   width: 30%;
 }
-.codedeploy-image img {
-  width: 100%;
-}
 
 .codedeploy-message-container {
   justify-content: center;
@@ -279,7 +250,6 @@
 }
 .codedeploy-message {
   text-align: center;
-  letter-spacing: 0.1em;
   /* width: 15em; */
 }
 .codedeploy-loading-container {
@@ -298,7 +268,6 @@
   /* width: 22em; */
   width: 75%;
   margin-bottom: 0.2em;
-  letter-spacing: 0.05em;
 }
 .codedeploy-loading-container small {
   font-size: 0.6em;
@@ -332,7 +301,6 @@
 }
 .complete-message {
   text-align: center;
-  letter-spacing: 0.1em;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -363,7 +331,6 @@
 }
 
 @media screen and (min-width: 420x) {
-  .section-cicd,
   .sticky-elem {
     width: 400px;
   }
@@ -372,9 +339,12 @@
   }
 }
 @media screen and (min-width: 750px) {
-  .section-cicd,
+  .section-cicd {
+    font-size: 1.5rem;
+  }
   .sticky-elem {
     width: 600px;
     font-size: 1.5rem;
   }
+
 }

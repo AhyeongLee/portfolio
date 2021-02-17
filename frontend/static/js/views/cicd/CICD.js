@@ -28,7 +28,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem git-message-container">
                 <div class="git-message">
-                    <p>$ git clone https://business-card-maker.git</p>
+                    <p class="command">$ git clone https://business-card-maker.git</p>
                 </div>
             </div>
             <div class="sticky-elem git-loading-container">
@@ -47,7 +47,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem webpack-message-container">
                 <div class="webpack-message">
-                    <p>$ webpack build --env production </p>
+                    <p class="command">$ webpack build --env production </p>
                 </div>
             </div>
             <div class="sticky-elem files-image-container">
@@ -75,7 +75,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem docker-message-container">
                 <div class="docker-message">
-                    <p>$ docker image build . </p>
+                    <p class="command">$ docker image build . </p>
                 </div>
             </div>
             <div class="sticky-elem dockerimage-image-container">
@@ -90,7 +90,7 @@ export default class extends AbstractView {
             </div>
             <div class="sticky-elem push-message-container">
                 <div class="push-message">
-                    <p>$ docker push \${ECR_URL}:\${BUILD_NUM}</p>
+                    <p class="command">$ docker push \${ECR_URL}:\${BUILD_NUM}</p>
                 </div>
             </div>
         </article>
@@ -156,7 +156,7 @@ export default class extends AbstractView {
                     git_image_translateY_in: [0, -80, { start: 0.1, end: 0.2}],
                     git_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.25 }],
                     git_message_container_translateY_in: [200, 500, { start: 0.15, end: 0.25}],
-                    git_message_width: [0.7, 18.2, { start: 0.25, end: 0.4}],
+                    git_message_width: [0.7, 18.4, { start: 0.25, end: 0.4}],
                     // 0.48
         
                     git_loading_container_opacity_in: [0, 1, { start: 0.5, end: 0.55}],
@@ -247,7 +247,7 @@ export default class extends AbstractView {
                     docker_image_scale_in: [1, 1, {start:0.01, end: 0.05}],
                     docker_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.2 }],
                     docker_message_container_translateY_in: [-200, -500, { start: 0.15, end: 0.2}],
-                    docker_message_width: [0.7, 9.4, { start: 0.2, end: 0.3}],
+                    docker_message_width: [0.7, 9.2, { start: 0.2, end: 0.3}],
                     // dockerfile_image_translateY_in: [-100, -100, {start: 0.2, end: 0.3}],
                     // dockerfile_image_opacity_in: [0, 1, {start: 0.2, end: 0.3}],
                     // 0.32
@@ -256,7 +256,7 @@ export default class extends AbstractView {
                     ecr_image_opacity_in: [0, 1, {start: 0.55, end: 0.6}],
                     push_message_container_opacity_in: [0, 1, { start: 0.55, end: 0.6 }],
                     push_message_container_translateY_in: [800, 1000, { start: 0.55, end: 0.6}],
-                    push_message_width: [0.7, 17.5, { start: 0.6, end: 0.7}],
+                    push_message_width: [0.7, 17, { start: 0.6, end: 0.7}],
             
                     // 0.73        
 
