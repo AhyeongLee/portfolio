@@ -1,6 +1,6 @@
 import groovy.transform.Field
 
-def S3_BUCKET = "aylee-deploy"
+@Field def S3_BUCKET = "aylee-deploy"
 
 @Field def REVISION = ""
 def DEPLOYMENT_GROUP = "dev"
@@ -22,7 +22,7 @@ pipeline {
                         
                     } catch(Exception e) {
                         print(e)
-                        cleanWs()
+                        // cleanWs()
                         currentBuild.result = 'FAILURE'
                     }
                 }
@@ -52,7 +52,7 @@ pipeline {
 
                     } catch(Exception e) {
                         print(e)
-                        cleanWs()
+                        // cleanWs()
                         currentBuild.result = 'FAILURE'
                     }
                 }
