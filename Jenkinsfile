@@ -50,6 +50,7 @@ pipeline {
                             createAppspecAndUpload()
                         }
 
+                        env.zipResult = true
 
                     } catch(Exception e) {
                         print(e)
@@ -112,7 +113,7 @@ aws deploy create-deployment \
 
 def createAppspecAndUpload() {
     sh """
-cat << EOF > appspec.yaml
+cat << EOF > appspec.yml
 version: 0.0
 os: linux
 files:
