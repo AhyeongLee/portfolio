@@ -3,11 +3,11 @@ export default class {
 
     }
 
-    setTitle(title) {
+    setTitle = (title) => {
         document.title = title;
     }
 
-    async getHtml() {
+    getHtml = async () => {
         return "";
     }
 }

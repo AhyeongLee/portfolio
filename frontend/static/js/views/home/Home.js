@@ -86,17 +86,11 @@ export default class extends AbstractView {
         this.canvas.width = window.innerWidth * 0.9;
         
         if ("ontouchstart" in document.documentElement) {
-            console.log('ontouch');
             this.canvas.width *= 2;
             this.canvas.height = this.canvas.width * this.canvasRatio;
             this.canvas.style.width = `${this.canvas.width/2}px`;
             this.canvas.style.height = `${this.canvas.height/2}px`;
             return;
-            this.circleSize = 2;
-            this.distanceLimit = 50;
-            this.mouseSize = 25;    
-            this.canvasRatio = 0.6;
-            this.speedRatio = 1;
         } else if (window.innerWidth < 420) {
             this.circleSize = 6;
             this.distanceLimit = 50;

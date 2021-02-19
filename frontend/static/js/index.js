@@ -39,7 +39,12 @@ const router = async () => {
     
 
     const app = document.querySelector('#app');
-    app.innerHTML = await view.getHtml();
+    app.innerHTML = `
+        <div class="loading-container" style="animation: blinking 0.7s linear alternate infinite;">
+            Loading ...
+        </div>
+        `;
+    app.innerHTML = await view.getHtml(app.innerHTML);
     const title = document.title.toLocaleLowerCase();
     app.className = "";
     app.classList.add(`section-${title}`);
