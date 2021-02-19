@@ -12,7 +12,7 @@ export default class extends AbstractView {
     }
 
     getHtml = async () => {
-        return fetch('http://d6cibru4nqeka.cloudfront.net/html/cicd.html')
+        return fetch('https://d6cibru4nqeka.cloudfront.net/html/cicd.html')
         .then((response) => {
             return response.text();
         });
