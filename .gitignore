@@ -3,3 +3,6 @@
 **/node_modules/*
 
 **/dist/*
+
+**/static/css/*
+**/static/images/*
