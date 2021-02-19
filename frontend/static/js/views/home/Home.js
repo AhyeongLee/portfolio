@@ -9,20 +9,10 @@ export default class extends AbstractView {
     }
 
     getHtml = async () => {
-        return `
-            <div class="welcome">
-                <div class="hello">
-                    <h1>Hello,</h1>
-                    <h1> I am Ahyeong</h1>
-                </div>
-                <h2>Welcome to my portfolio!</h2>
-            </div>
-            <canvas class="canvas"></canvas>
-            <div class="descriptions">
-                <p>I'm a front-end web developer who can handle CI/CD process and AWS.</p>
-                <p>The icons shown above are the skills I have learned and experienced.</p>
-            </div>
-        `;
+        return fetch('http://d6cibru4nqeka.cloudfront.net/html/home.html')
+        .then((response) => {
+            return response.text();
+        });
     }
 
 

@@ -12,7 +12,7 @@ pipeline {
         PATH = "$PATH"
     }
     stages {
-        stage('Webpack Build') {           
+        stage('Webpack Build') {
             steps {            
                 script {
                     try {
@@ -22,7 +22,7 @@ pipeline {
                         
                     } catch(Exception e) {
                         print(e)
-                        // cleanWs()
+                        cleanWs()
                         currentBuild.result = 'FAILURE'
                     }
                 }
@@ -41,8 +41,6 @@ pipeline {
                         sh "mkdir tmp/frontend"
 
                         sh "sudo cp -r frontend/dist tmp/frontend/"
-                        sh "sudo cp -r frontend/static/css tmp/frontend/"
-                        sh "sudo cp -r frontend/static/images tmp/frontend/"
                         sh "sudo cp frontend/index.html tmp/frontend/"
                         sh "sudo cp server.js tmp/"
                         sh "sudo cp package.json tmp/"
@@ -57,7 +55,7 @@ pipeline {
 
                     } catch(Exception e) {
                         print(e)
-                        // cleanWs()
+                        cleanWs()
                         currentBuild.result = 'FAILURE'
                     }
                 }
@@ -137,7 +135,7 @@ hooks:
 EOF
     """
 
-    sh "zip appspec.zip *"
+    sh "zip -r appspec.zip *"
 
     withAWS(credentials:"aws-access-key", region: 'ap-northeast-2') {
         sh "aws s3 cp appspec.zip s3://${S3_BUCKET}/${JOB_NAME}/${DEPLOYMENT_GROUP}/appspec.zip"
