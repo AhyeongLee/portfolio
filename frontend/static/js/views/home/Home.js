@@ -31,7 +31,7 @@ export default class extends AbstractView {
         this.img = new Image();
     }
     setImage = () => {
-        this.img.src = '/static/images/home.png';
+        this.img.src = 'https://d6cibru4nqeka.cloudfront.net/images/home.png';
         // this.img.onload = this.drawImage;
         this.img.addEventListener('load', this.drawImage);
     }
