@@ -5,7 +5,6 @@ const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 module.exports = {
     mode: 'development',
     name: "portfolio setting",
-    devtool: 'cheap-module-source-map',
     resolve: {
         extensions: ['.js', '.jsx'],
     },
