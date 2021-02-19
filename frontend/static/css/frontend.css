@@ -111,12 +111,12 @@
   animation: progress-80 2s 0.3s linear forwards;
 }
 .jenkins-gauge-container .gauge-bar {
-  stroke: #ba4e8d;
+  stroke: #2d48bf;
   stroke-dashoffset: 314;
   animation: progress-75 2s 0.3s linear forwards;
 }
 .docker-gauge-container .gauge-bar {
-  stroke: #2d48bf;
+  stroke: #ba4e8d;
   stroke-dashoffset: 314;
   animation: progress-30 2s 0.3s linear forwards;
 }
@@ -142,6 +142,7 @@
 }
 .frontend-article {
   width: 100%;
+  padding: 2em 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
