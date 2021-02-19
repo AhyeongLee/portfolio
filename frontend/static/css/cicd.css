@@ -1,10 +1,9 @@
 @import "./root.css";
 
-
 .section-cicd {
   position: relative;
   width: 100%;
-  padding: calc(var(--nav-height) + 2em) 0;
+  padding: calc(var(--nav-height) + 8em) 0;
 }
 .section-cicd img {
   width: 100%;
@@ -19,6 +18,10 @@
   width: 100%;
 }
 .jenkins-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1000px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -152,7 +155,6 @@
   width: 50%;
 }
 
-
 .ajs-image-container {
   z-index: -1;
   top: 20%;
@@ -175,7 +177,6 @@
 .docker-image {
   width: 70%;
 }
-
 
 .docker-message-container {
   opacity: 0;
@@ -346,5 +347,4 @@
     width: 600px;
     font-size: 1.5rem;
   }
-
 }

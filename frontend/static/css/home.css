@@ -24,7 +24,7 @@
   font-size: 2.3rem;
   font-weight: 700;
   padding-bottom: 0.5em;
-  
+
   color: var(--color-blue);
 }
 .welcome h2 {
@@ -54,7 +54,7 @@
     font-size: 1.3rem;
   }
   .section-home {
-    padding: calc(var(--nav-height) + 2em) var(--padding-l);
+    padding: calc(var(--nav-height) + 8em) var(--padding-l);
     /* min-height: 650px; */
   }
 }
@@ -64,7 +64,7 @@
   }
 
   .section-home {
-    padding: calc(var(--nav-height) + 2em) var(--padding-xl);
+    padding: calc(var(--nav-height) + 8em) var(--padding-xl);
     /* padding: calc(3.5em + var(--nav-height)) var(--padding-xl); */
     /* min-height: 650px; */
   }

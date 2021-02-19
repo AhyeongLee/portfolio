@@ -6,7 +6,7 @@ body {
   width: 100%;
   height: 100%;
   /* font-family: "Do Hyeon", sans-serif; */
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: "Nanum Gothic Coding", monospace;
   color: var(--color-blue);
 }
 body {
@@ -47,6 +47,7 @@ nav {
 ul {
   box-sizing: border-box;
   width: 100%;
+  max-width: 600px;
   height: 100%;
   padding: 0 var(--padding);
   display: flex;
@@ -97,26 +98,13 @@ footer a:hover {
 }
 
 @media screen and (min-width: 420px) {
-  ul {
-    padding: 0 var(--padding-l);
-  }
-
   .sticky-elem {
     width: 400px;
   }
 }
 @media screen and (min-width: 750px) {
-  ul {
-    padding: 0 var(--padding-xl);
-  }
   .sticky-elem {
     width: 600px;
     font-size: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  ul {
-    padding: 0 calc((100% - 900px) / 2);
   }
 }
