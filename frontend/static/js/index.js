@@ -12,6 +12,7 @@ const navigateTo = url => {
     router();
 };
 const router = async () => {
+    window.scrollTo(0, 0);
     const routes = [
         { path: "/", view: Home },
         { path: "/frontend", view: Frontend},
