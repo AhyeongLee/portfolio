@@ -6,20 +6,25 @@ import Home from './views/home/Home.js';
 let match;
 let view;
 let resizeTimer = null;
+let scrollTimer = null;
+const routes = [
+    { path: "/", view: Home },
+    { path: "/frontend", view: Frontend},
+    { path: "/cicd", view: CICD},
+    { path: "/aws", view: AWS},
+];
 
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
 };
+
+/**
+ * path를 보고 해당하는 페이지로 routing
+ * 존재하지 않는 path일 때는 home으로 routing
+ */
 const router = async () => {
     window.scrollTo(0, 0);
-    const routes = [
-        { path: "/", view: Home },
-        { path: "/frontend", view: Frontend},
-        { path: "/cicd", view: CICD},
-        { path: "/aws", view: AWS},
-    ];
-
     const potentialMatches = routes.map(route => {
         return {
             route: route,
@@ -36,15 +41,14 @@ const router = async () => {
     }
 
     view = new match.route.view();
-    
-
     const app = document.querySelector('#app');
     app.innerHTML = `
-        <div class="loading-container" style="animation: blinking 0.7s linear alternate infinite; width:100%; text-align:center; position:fixed; top:35%; font-size:1rem">
+        <div class="loading-container" 
+            style="animation: blinking 0.7s linear alternate infinite; width:100%; text-align:center; position:fixed; top:35%; font-size:1rem">
             Loading ...
         </div>
         `;
-    // app.innerHTML = await view.getHtml(app.innerHTML);
+    app.innerHTML = await view.getHtml(app.innerHTML);
     const title = document.title.toLocaleLowerCase();
     app.className = "";
     app.classList.add(`section-${title}`);
@@ -53,8 +57,6 @@ const router = async () => {
         view.init();
         view.resizeWindow();
         view.setImage();
-    } else if (match.route.path === '/frontend') {
-        
     } else if (match.route.path === '/cicd') {
         view.init();
         view.setLayout();
@@ -76,16 +78,17 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener('mousemove', (e) => {
     if ("ontouchstart" in document.documentElement) return;
     if (match.route.path !== '/') return;
-    view.setMouseLocation(e.clientX, e.clientY);
+    view.setMouseLocation(e.pageX, e.pageY);
 });
 
+/**
+ * 성능이슈 때문에 윈도우 창 크기를 조정하는 중에는 resizing을 하지 않는다.
+ * 조정이 끝나면 resize
+ */
 window.addEventListener('resize', () => {
-
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
         if (match.route.path === '/') {
-            // resize 했을 때 성능 이슈 때문에 resizeWindow() method 호출하는 대신 refresh
-            // location.reload();
             view.resizeWindow();
             view.drawImage();
         } else if (match.route.path === '/cicd') {

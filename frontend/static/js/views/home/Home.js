@@ -15,26 +15,16 @@ export default class extends AbstractView {
         });
     }
 
-
     init = () => {
         this.canvas = document.querySelector('.canvas');
         this.ctx = this.canvas.getContext('2d');
         this.pixels = [];
-        this.imageRatio = 1;
-        this.circleSize = 10;
-        this.distanceLimit = 100;
-        this.mouseSize = 50;
-        this.speedRatio = 1;
-
-        this.isPlaying = false;
-
         this.img = new Image();
     }
     setImage = () => {
         this.img.src = 'https://d6cibru4nqeka.cloudfront.net/images/home.png';
         this.img.crossOrigin = "anonymous";
-        // this.img.onload = this.drawImage;
-        this.img.addEventListener('load', this.drawImage);
+        this.img.onload = this.drawImage;
     }
     drawImage = () => {
         this.imageRatio = this.canvas.width / this.img.width * 0.65;
@@ -43,17 +33,15 @@ export default class extends AbstractView {
         this.ctx.drawImage(this.img, this.startX, this.startY , this.img.width * this.imageRatio , this.img.height * this.imageRatio );
         
         if ("ontouchstart" in document.documentElement) {
-            
             return;
         }
-        this.getImageData();
+        this.createParticle();
     }
-    getImageData = () => {
+    createParticle = () => {
         const imageData = this.ctx.getImageData(0, 0, this.img.width, this.img.height ).data;
         
         for (let i = 0; i < imageData.length / (4 * this.circleSize); i++) {
             if (imageData[i * 4 * this.circleSize] === 0) continue;
-
             const x = (i * this.circleSize) % this.img.width;
             const y = Math.floor((i * this.circleSize) / this.img.width);
             this.pixels.push(new Particle({
@@ -65,12 +53,9 @@ export default class extends AbstractView {
                 a: imageData[i * 4  * this.circleSize+ 3],
             }, this.distanceLimit, this.speedRatio));
         }
-        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
         this.animate();
     }
-
     animate = () => {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.pixels.forEach(pixel => {
@@ -79,12 +64,8 @@ export default class extends AbstractView {
         });
         window.requestAnimationFrame(this.animate);
     }
-
     resizeWindow = () => {
-        
-        // this.canvas.width = this.canvasWidth;
         this.canvas.width = window.innerWidth * 0.9;
-        
         if ("ontouchstart" in document.documentElement) {
             this.canvas.width *= 2;
             this.canvas.height = this.canvas.width * this.canvasRatio;
@@ -129,16 +110,10 @@ export default class extends AbstractView {
         this.mouseX = 4000;
         this.mouseY =  4000;
         this.pixels = [];
-
-    }
-    setIsPlaying = (param) => {
-        this.isPlaying = param;
     }
     setMouseLocation = (x, y) => {
         this.mouseX = x - this.canvasX;
         this.mouseY = y - this.canvasY;
     }
-
-
 }
 

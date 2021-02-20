@@ -211,7 +211,6 @@ export default class extends AbstractView {
     }
 
     setLayout = (yOffset) => {
-        
         this.articleInfo.forEach( info => {
             if (info.type === 'sticky') {
                 info.scrollHeight = info.heightNum * window.innerHeight;
@@ -288,7 +287,6 @@ export default class extends AbstractView {
         const values = this.articleInfo[this.currentArticle].values;
         const currentYOffset = this.yOffset - this.prevScrollHeight;
         const scrollRatio = currentYOffset / this.articleInfo[this.currentArticle].scrollHeight;
-     
         
         switch (this.currentArticle) {
             case 0:
@@ -351,8 +349,6 @@ export default class extends AbstractView {
                     objs.docker_image.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.docker_message_container.style.opacity = this.calcValues(values.docker_message_container_opacity_in, currentYOffset); 
                     objs.docker_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_message_container_translateY_in, currentYOffset)}%, 0)`;
-                    // objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_in, currentYOffset);
-                    // objs.dockerfile_image.style.transform = `translate3d(-50%, ${this.calcValues(values.dockerfile_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.docker_image_for_scale.style.transform = `scale(${this.calcValues(values.docker_image_scale_in, currentYOffset)})`;
                     objs.docker_message.style.width = `${this.calcValues(values.docker_message_width, currentYOffset)}em`;
                 } else {
@@ -381,8 +377,6 @@ export default class extends AbstractView {
                 break;
             case 3:
                 if (scrollRatio < 0.15) {
-
-                    
                     objs.ecs_image.style.opacity = this.calcValues(values.ecs_image_opacity_in, currentYOffset);
                     objs.ecs_image.style.transform = `translate3d(-50%, ${this.calcValues(values.ecs_image_translateY_in, currentYOffset)}%, 0)`;
                     objs.codedeploy_image.style.opacity = this.calcValues(values.codedeploy_image_opacity_in, currentYOffset);
@@ -391,7 +385,6 @@ export default class extends AbstractView {
                     objs.codedeploy_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.codedeploy_message_container_translateY_in, currentYOffset)}%, 0)`;
                     
                 } else {
-
                     objs.ecs_image.style.opacity = this.calcValues(values.ecs_image_opacity_out, currentYOffset);
                     objs.ecs_image.style.transform = `translate3d(-50%, ${this.calcValues(values.ecs_image_translateY_out, currentYOffset)}%, 0)`;
                     objs.codedeploy_image.style.opacity = this.calcValues(values.codedeploy_image_opacity_out, currentYOffset);
@@ -399,7 +392,6 @@ export default class extends AbstractView {
                     objs.codedeploy_message_container.style.opacity = this.calcValues(values.codedeploy_message_container_opacity_out, currentYOffset);
                     objs.codedeploy_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.codedeploy_message_container_translateY_out, currentYOffset)}%, 0)`;
                 }
-               
                 if (scrollRatio < 0.63) {
                     objs.codedeploy_loading_container.style.opacity = this.calcValues(values.codedeploy_loading_container_opacity_in, currentYOffset);
                     objs.codedeploy_loading_ratio_1.style.width = `${this.calcValues(values.codedeploy_loading_ratio_1_width, currentYOffset)}%`;
@@ -412,9 +404,6 @@ export default class extends AbstractView {
                 if (scrollRatio < 0.83) {
                     
                     objs.complete_message_container.style.opacity = this.calcValues(values.complete_message_container_opacity_in, currentYOffset);
-                } else {
-                    
-                    // objs.complete_message_container.style.opacity = this.calcValues(values.complete_message_container_opacity_out, currentYOffset);
                 }
                 break;
         }
