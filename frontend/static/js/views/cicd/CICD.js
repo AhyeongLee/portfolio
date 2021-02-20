@@ -6,9 +6,8 @@ export default class extends AbstractView {
     constructor() {
         super();
         this.setTitle('CICD');
-        
-        this.prevScrollHeight = 0; // yOffset보다 이전에 위치한 스크롤 섹션들의 높이 합
-        this.currentArticle = 0; // 현재 Scene(Scroll Section)
+        this.prevScrollHeight = 0; // yOffset보다 이전에 위치한 스크롤 article들의 높이 합
+        this.currentArticle = 0; 
     }
 
     getHtml = async () => {
@@ -18,6 +17,9 @@ export default class extends AbstractView {
         });
     }
 
+    /**
+     * animation 필요한 object들과 values(시작, 종료 값 & 시작, 종료 시점)
+     */
     init() {
         this.articleInfo = [
             {
@@ -70,21 +72,14 @@ export default class extends AbstractView {
         
                     files_image_for_scale: document.querySelector('.files-image'),
                     ajs_image_for_scale: document.querySelector('.ajs-image'),
-                    
-                    
-        
-        
                 },
-                values: {
-        
+                values: {  
                     webpack_image_opacity_in: [0, 1, { start: 0.05, end: 0.1}],
                     webpack_image_translateY_in: [0, -100, { start: 0.05, end: 0.1}],
                     webpack_message_container_opacity_in: [0, 1, { start: 0.1, end: 0.15 }],
                     files_image_opacity_in: [0, 1, { start: 0.05, end: 0.1}],
                     // 0.22
-                    
                     webpack_message_width: [0.7, 14, { start: 0.15, end: 0.25}],
-
                     docker_image_translateY_in: [300, 30, {start: 0.5, end: 0.6}],
                     docker_image_opacity_in: [0, 1, {start: 0.5, end: 0.6}],
                     files_image_scale: [1, 0.1, { start: 0.43, end: 0.6}],
@@ -104,8 +99,6 @@ export default class extends AbstractView {
                     webpack_image_translateY_out: [-100, -200, { start: 0.85, end: 0.9}],
                     docker_image_translateY_out: [30, 300, {start: 0.85, end: 0.99}],
                     docker_image_opacity_out: [1, 0, {start: 0.9, end: 0.99}],
-        
-        
                 }
             },
             {   // 2
@@ -117,7 +110,6 @@ export default class extends AbstractView {
                     docker_image: document.querySelector('#scroll-article-2 .docker-image-container'),
                     docker_message_container: document.querySelector('.docker-message-container'),
                     docker_message: document.querySelector('.docker-message'),
-                    // dockerfile_image: document.querySelector('.dockerfile-image-container'),
                     dockerimage_image: document.querySelector('.dockerimage-image-container'),
                     ecr_image: document.querySelector('.ecr-image-container'),
                     push_message_container: document.querySelector('.push-message-container'),
@@ -131,8 +123,6 @@ export default class extends AbstractView {
                     docker_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.2 }],
                     docker_message_container_translateY_in: [-200, -500, { start: 0.15, end: 0.2}],
                     docker_message_width: [0.7, 9.2, { start: 0.2, end: 0.3}],
-                    // dockerfile_image_translateY_in: [-100, -100, {start: 0.2, end: 0.3}],
-                    // dockerfile_image_opacity_in: [0, 1, {start: 0.2, end: 0.3}],
                     // 0.32
                     dockerimage_image_opacity_in: [0, 1, {start: 0.5, end: 0.6}],
                     dockerimage_image_translateY_in: [0, 0, {start: 0.5, end: 0.6}],
@@ -140,7 +130,6 @@ export default class extends AbstractView {
                     push_message_container_opacity_in: [0, 1, { start: 0.55, end: 0.6 }],
                     push_message_container_translateY_in: [800, 1000, { start: 0.55, end: 0.6}],
                     push_message_width: [0.7, 17, { start: 0.6, end: 0.7}],
-            
                     // 0.73        
 
                     docker_image_scale_out: [1, 3, {start:0.35, end: 0.5}],
@@ -148,7 +137,6 @@ export default class extends AbstractView {
                     docker_message_container_opacity_out: [1, 0, { start: 0.35, end: 0.4 }],
                     docker_message_container_translateY_out: [-500, -200, { start: 0.35, end: 0.4}],
                     docker_image_translateY_out: [0, -100, {start: 0.35, end: 0.5}],
-                    // dockerfile_image_opacity_out: [1, 0, {start: 0.35, end: 0.5}],
                     docker_image_opacity_out: [1, 0, {start: 0.5, end: 0.55}],
                     push_message_container_opacity_out: [1, 0, { start: 0.6, end: 0.65 }],
                     push_message_container_translateY_out: [1000, 800, { start: 0.6, end: 0.65}],
@@ -156,7 +144,6 @@ export default class extends AbstractView {
                     dockerimage_image_opacity_out: [1, 0, {start: 0.8, end: 0.9}],
                     dockerimage_image_translateY_out: [0, -150, {start: 0.8, end: 0.9}],
                     ecr_image_opacity_out: [1, 0, {start: 0.9, end: 0.95}],
-        
                 }
             },
             {   // 3
@@ -190,8 +177,7 @@ export default class extends AbstractView {
                     // 0.63
 
                     complete_message_container_opacity_in: [0, 1, { start: 0.7, end: 0.75 }],
-        
-        
+
                     codedeploy_message_container_opacity_out: [1, 0, { start: 0.2, end: 0.25 }],
                     codedeploy_message_container_translateY_out: [-40, 0, { start: 0.2, end: 0.25}],
                     codedeploy_image_opacity_out: [1, 0, {start: 0.2, end: 0.25}],
@@ -200,10 +186,6 @@ export default class extends AbstractView {
                     ecs_image_translateY_out: [-150, -200, {start: 0.2, end: 0.25}],
                     
                     codedeploy_loading_container_opacity_out: [1, 0, { start: 0.65, end: 0.7}],
-                    
-        
-                    
-                    // complete_message_container_opacity_out: [1, 0, { start: 0.9, end: 0.95 }],
                     
                 }
             }
@@ -256,8 +238,7 @@ export default class extends AbstractView {
     }
     
     calcValues = (values, currentYOffset) => {
-        // [0, 1, { start: 0.1, end: 0.2 }]
-        let rv;
+        let result;
         const scrollHeight = this.articleInfo[this.currentArticle].scrollHeight;
         const scrollRatio = currentYOffset / scrollHeight;
     
@@ -268,18 +249,17 @@ export default class extends AbstractView {
             const partScrollHeight = partScrollEnd - partScrollStart;
     
             if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
-                rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0]) + values[0];
+                result = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0]) + values[0];
             } else if (currentYOffset < partScrollStart) {
-                rv = values[0];
+                result = values[0];
             } else if (currentYOffset > partScrollEnd) {
-                rv = values[1];
+                result = values[1];
             }
             
         } else {
-            rv = scrollRatio * (values[1] - values[0]) + values[0];
+            result = scrollRatio * (values[1] - values[0]) + values[0];
         }
-        
-        return rv;
+        return result;
     }
     
     playAnimation = () => {
@@ -356,7 +336,6 @@ export default class extends AbstractView {
                     objs.docker_image.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_image_translateY_out, currentYOffset)}%, 0)`;
                     objs.docker_message_container.style.opacity = this.calcValues(values.docker_message_container_opacity_out, currentYOffset); 
                     objs.docker_message_container.style.transform = `translate3d(-50%, ${this.calcValues(values.docker_message_container_translateY_out, currentYOffset)}%, 0)`;
-                    // objs.dockerfile_image.style.opacity = this.calcValues(values.dockerfile_image_opacity_out, currentYOffset); 
                     objs.docker_image_for_scale.style.transform = `scale(${this.calcValues(values.docker_image_scale_out, currentYOffset)})`;
                     
                 } 

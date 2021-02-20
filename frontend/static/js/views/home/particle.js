@@ -19,7 +19,6 @@ export default class Particle {
         let dx = this.x - mouseX;
         let dy = this.y - mouseY;
         let distance = Math.sqrt(dx * dx + dy * dy);
-
         if (distance < this.limit) {
             this.dx = dx / distance * this.speed;
             this.dy = dy / distance * this.speed;
@@ -27,7 +26,6 @@ export default class Particle {
             this.dx = 0;
             this.dy = 0;
         }
-
         if (distance > mouseSize + circleSize) {
             if (this.x !== this.originX) {
                 this.dx = this.speedRatio * (this.originX - this.x)/5;
@@ -44,9 +42,6 @@ export default class Particle {
         this.y += this.dy;
         ctx.beginPath();
         ctx.arc(this.x, this.y, size/2, 0, Math.PI * 2);
-        // if (Math.abs(this.x - this.originX) > this.limit || Math.abs(this.y - this.originY) > this.limit) {
-        //     this.a = 0;
-        // }
         ctx.fillStyle = `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
         ctx.fill();
     }
