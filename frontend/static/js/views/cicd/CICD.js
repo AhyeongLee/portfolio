@@ -41,14 +41,13 @@ export default class extends AbstractView {
                     git_image_translateY_in: [0, -80, { start: 0.1, end: 0.2}],
                     git_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.25 }],
                     git_message_container_translateY_in: [200, 500, { start: 0.15, end: 0.25}],
-                    git_message_width: [0.7, 18.4, { start: 0.25, end: 0.4}],
+                    git_message_width: [0.7, 18.7, { start: 0.25, end: 0.4}],
                     // 0.48
         
                     git_loading_container_opacity_in: [0, 1, { start: 0.5, end: 0.55}],
                     git_loading_ratio_width: [0, 100, { start: 0.55, end: 0.75}],
                     // 0.83
-                    
-        
+                
                     git_image_opacity_out: [1, 0, { start: 0.45, end: 0.5}],
                     git_image_translateY_out: [-80, 0, { start: 0.45, end: 0.5}],
                     git_message_container_opacity_out: [1, 0, { start: 0.45, end: 0.5 }],
@@ -122,14 +121,14 @@ export default class extends AbstractView {
                     docker_image_scale_in: [1, 1, {start:0.01, end: 0.05}],
                     docker_message_container_opacity_in: [0, 1, { start: 0.15, end: 0.2 }],
                     docker_message_container_translateY_in: [-200, -500, { start: 0.15, end: 0.2}],
-                    docker_message_width: [0.7, 9.2, { start: 0.2, end: 0.3}],
+                    docker_message_width: [0.7, 9.4, { start: 0.2, end: 0.3}],
                     // 0.32
                     dockerimage_image_opacity_in: [0, 1, {start: 0.5, end: 0.6}],
                     dockerimage_image_translateY_in: [0, 0, {start: 0.5, end: 0.6}],
                     ecr_image_opacity_in: [0, 1, {start: 0.55, end: 0.6}],
                     push_message_container_opacity_in: [0, 1, { start: 0.55, end: 0.6 }],
                     push_message_container_translateY_in: [800, 1000, { start: 0.55, end: 0.6}],
-                    push_message_width: [0.7, 17, { start: 0.6, end: 0.7}],
+                    push_message_width: [0.7, 16.5, { start: 0.6, end: 0.7}],
                     // 0.73        
 
                     docker_image_scale_out: [1, 3, {start:0.35, end: 0.5}],
