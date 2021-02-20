@@ -213,6 +213,11 @@ export default class extends AbstractView {
         this.scrollLoop(yOffset);
     }
     
+    /**
+     * scroll 했을 때 실행되는 함수
+     * @param {Number} yOffset window.pageYOffset
+     * yOffset으로 현재 article이 어떤 article 인지 계산
+     */    
     scrollLoop = (yOffset) => {
         this.yOffset = yOffset;
     
@@ -237,6 +242,12 @@ export default class extends AbstractView {
     
     }
     
+    /**
+     * 
+     * @param {Array} values [ start-style, end-style, { start, end } ]
+     * @param {Number} currentYOffset 현재 화면에 보여지고 있는 article에서의 y offset
+     * @return {Number} 현재 y offset에서 해당 obj가 가져야할 값 반환
+     */
     calcValues = (values, currentYOffset) => {
         let result;
         const scrollHeight = this.articleInfo[this.currentArticle].scrollHeight;
@@ -262,6 +273,10 @@ export default class extends AbstractView {
         return result;
     }
     
+    /**
+     * 실질적인 scroll animation
+     * calcValue() method를 통해 얻은 값으로 실제 style을 적용시켜준다.
+     */
     playAnimation = () => {
         const objs = this.articleInfo[this.currentArticle].objs;
         const values = this.articleInfo[this.currentArticle].values;
