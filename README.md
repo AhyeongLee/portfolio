@@ -10,7 +10,7 @@
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#screen-shots">Screen Shots</a></li>
-    <li><a href="cdn">CDN</a></li>
+    <li><a href="#cdn">CDN</a></li>
     <li><a href="#cicd">CICD</a></li>
   </ol>
 </details>
